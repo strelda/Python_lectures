@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Python ZS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./src/bootstrap.min.css">
+    <script src="./src/jquery.min.js"></script>
+    <script src="./src/bootstrap.min.js"></script>   
+  
+
+    <link rel="stylesheet" type="text/css" href="./src/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>   
+ 
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="jumbotron">   
+
+            <a href="./index.html" class="btn btn-default">
+                <i class="fa fa-home" aria-hidden="true"></i>
+            </a>
+            <h1 class="display-4">Programování v <span style="color: var(--primary-color);">Pythonu</span></h1>
+            <hr>
+            Tento kurz je postaven podle knihy <a href="https://htdp.org/">How to Design Programs</a>.
+            <br>
+            + Odkazy na cvičení z let 2020/2021: 
+                <b><a href="http://mj.ucw.cz/vyuka/2021/p1m/">zimní</a> </b>
+                a 
+                <b><a href="http://mj.ucw.cz/vyuka/2021/p2m/">letní</a> </b>semestr. Tato cvičení sloužila jako inspirace pro tento kurz.
+            <br>
+            +<b> <a href="https://www.khanacademy.org/computing/intro-to-python-fundamentals">Khan Academy: Introduction to Python fundamentals</a></b>
+            <br>
+            +<b> <a href="https://grugbrain.dev/">A layman's guide to thinking like the self-aware smol brained</a></b>
+        </div>
+
+
+        <section class="mt-5">
+            <h2 class="section-title">Cvičení</h2>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Výukové materiály</th>
+                        <th>Dodatečné soubory</th>
+                        <th>Odkazy</th>
+                        <th>Problémy</th>
+                        <th>Řešení</th>
+                    </tr>
+                </thead>
+                <tbody id="topics-table">
+                    </tbody>
+            </table>
+            
+            Pokud máte zájem zlepšit toto cvičení, zde je možnost: <a href="...">forms.office.com</a>. Odkaz bude aktivní do konce semestru.
+            <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+            <p><i>
+                <span style="font-weight: bold;">*</span> Při tvorbě výukových materiálů byl využíván model Claude. Převážně pro vymýšlení okrajových případů, přepis řešení do úhlednější podoby a dalších stylistických úprav.<br>
+                <span style="font-weight: bold;">**</span> Pokud naleznete chybu, nebo máte nápad na zlepšení, neváhejte mě kontaktovat.
+            </i></p>
+        </section>
+    </div>
+
+  
+    <script>
+      let topicCounter = 1;
+    
+      function addTopicItem(learningMaterials, additionalMaterials, links, problems, solutions) {
+        const row = document.createElement('tr');
+    
+        // Numbering
+        const numberCell = document.createElement('th');
+        numberCell.scope = "row";
+        numberCell.textContent = topicCounter++;
+        row.appendChild(numberCell);
+    
+        // Base path for supplementary materials
+        const basePath = "./1.semester/lecture";
+    
+        // Learning materials
+        const learningCell = document.createElement('td');
+            learningCell.innerHTML = learningMaterials.map(item => {
+                const href = `${basePath} ${numberCell.textContent}/${item.name}.html`;
+                return `<div class="item-wrapper"><a href="${href}" class="learning">${item.name}</a></div>`;
+            }).join('');
+            row.appendChild(learningCell);
+    
+        // Other files
+        const otherCell = document.createElement('td');
+            otherCell.innerHTML = additionalMaterials.map(item => {
+                const href = `${basePath} ${numberCell.textContent}/${item.name}`;
+                return `<div class="item-wrapper"><a href="${href}">${item.name}</a></div>`;
+            }).join('');
+            row.appendChild(otherCell);
+    
+        // Links
+        const linksCell = document.createElement('td');
+            linksCell.innerHTML = links.map(link => 
+                `<div class="item-wrapper"><a href="${link.href}">${link.text}</a></div>`
+            ).join('');
+            row.appendChild(linksCell);
+    
+        // Problems
+        const problemsCell = document.createElement('td');
+            problemsCell.innerHTML = problems.map(problem => {
+                const href = `${basePath} ${numberCell.textContent}/${problem.name}.html`;
+                return `<div class="item-wrapper"><a href="${href}" class="problems">${problem.name}</a></div>`;
+            }).join('');
+            row.appendChild(problemsCell);
+    
+        // Solutions
+        const solutionsCell = document.createElement('td');
+            solutionsCell.innerHTML = solutions.map(solution => {
+                const href = `${basePath} ${numberCell.textContent}/${solution.name}.html`;
+                return `<div class="item-wrapper"><a href="${href}" class="solution">${solution.name}</a></div>`;
+            }).join('');
+            row.appendChild(solutionsCell);
+    
+        document.getElementById('topics-table').appendChild(row);
+      }
+    
+      // Adding topic items with automatic numbering
+      addTopicItem(
+        [
+          { name: "1. what to expect from programming" },
+          { name: "2. python as a script" },
+          { name: "3. data representation and their arithmetic" },
+          { name: "4. booleans and conditions" },
+        ], 
+        [
+        ],
+        [
+          { text: "Python documentation", href: "https://docs.python.org/3/" },
+          { text: "VS Code", href: "https://code.visualstudio.com/" }
+        ], 
+        [], 
+        []
+      );
+    
+      addTopicItem(
+        [
+          { name: "1. how to design functions" },
+          { name: "2. functions" },
+          { name: "3. debugging and flow control" }
+        ], 
+        [
+          { name: "concatenation.py" },
+          { name: "traffic_light.py" },
+          { name: "finding divisors.py" }
+        ],
+        [
+          { text: "How to design programs", href: "https://htdp.org/" },
+        ], 
+        [
+          { name: "L2 lots of problems"}
+        ], 
+        [
+         { name: "L2 lots of problems - sol"}
+        ]
+      );
+        
+      addTopicItem(
+        [
+          { name: "0. Warmup: Euclid algorithm" },
+          { name: "1. program structure" },
+          { name: "2. read and write files" },
+          { name: "3. lists and for loop" },
+          { name: "4. doctest"}
+        ], 
+        [
+            { name: "traffic_light_safer.py" }
+        ],
+        [
+          
+        ], 
+        [
+          { name: "L3 lots of problems"}
+        ], 
+        [
+          { name: "L3 lots of problems - sol"}
+        ]
+      );
+
+      addTopicItem(
+        [
+          { name: "1. functions 2" },
+          { name: "2. intervals and enumerations" },
+          { name: "3. define data types" },
+          { name: "4. redesigned function recipe after clases" }
+        ], 
+        [ 
+        ],
+        [
+        ], 
+        [
+          { name: "L4 lots of problems"}
+        ], 
+        [
+         { name: "L4 lots of problems - sol"}
+        ]
+      );
+      addTopicItem(
+        [
+          { name: "0. turtle" },
+          { name: "1. classes" },
+          { name: "2. functions 3" },
+          { name: "3. understanding docs" }
+        ], 
+        [
+          
+        ],
+        [
+
+        ], 
+        [
+          { name: "L5 lots of problems"}
+        ], 
+        [
+          { name: "L5 lots of problems - sol"}
+        ]
+      );
+      addTopicItem(
+        [
+          { name: "1. lists and matrices" },
+          { name: "2. introduction to datascience" },
+          { name: "3. errors" },
+        ], 
+        [
+          
+        ],
+        [
+        
+        ], 
+        [
+          { name: "L6 lots of problems"}
+        ], 
+        [
+          { name: "L6 lots of problems - sol"}
+        ]
+      );
+      addTopicItem(
+        [
+          { name: "1. sort and search" },
+          { name: "2. list comprehensions" }
+        ], 
+        [
+          { text: "Sorting algorithms visualized", href: "https://www.youtube.com/watch?v=kPRA0W1kECg" }
+        ],
+        [
+          { text: '<span style="color: purple;">Sort, search problems: TBD next time</span>', href: "images/snake.jpeg"  }
+        ], 
+        [
+          { name: "L7 lots of problems - sort, search"},
+          { name: "L7 lots of problems - list comprehension"}
+        ], 
+        [
+          { name: "L7 lots of problems - sort, search - sol"},  
+          { name: "L7 lots of problems - list comprehension - sol"}
+        ]
+      );
+      addTopicItem(
+        [
+          { name: "1. sets" },
+          { name: "2. dictionary" }
+        ], 
+        [
+          { name: "poe.txt"}
+        ],
+        [
+
+        ], 
+        [
+          { name: "L8 lots of problems"}
+        ], 
+        [
+          { name: "L8 lots of problems - sol"}
+        ]
+      );
+      addTopicItem(
+          [
+              { name: "1. recursion" },
+              { name: "2. parsing"}
+            ], 
+            [
+              {name: "colors.txt"}
+            ],
+            [
+              {text: "Advent of Code", href: "https://adventofcode.com/"}
+            ], 
+            [
+              { name: "L9 lots of problems"},
+              { name: "Quicksort"}
+            ], 
+            [
+               { name: "L9 lots of problems - sol"}
+            ]
+      );
+      
+      addTopicItem(
+        [
+          { name: "1. tuples" },
+          { name: "2. advanced classes" }
+        ], 
+        [
+        ],
+        [
+
+        ], 
+        [
+          { name: "L10 lots of problems"}
+        ], 
+        [
+          { name: "L10 lots of problems - sol"}
+        ]
+      );
+      addTopicItem(
+        [
+          { name: "1. functional_programming" },
+          { name: "2. tricks with functions" }
+        ], 
+        [
+
+        ],
+        [
+
+        ], 
+        [
+          { name: "L11 lots of problems"}
+        ], 
+        [
+         { name: "L11 lots of problems - sol"}
+        ]
+      );
+      addTopicItem(
+        [
+          { name: "1. queue and stack" },
+          { name: "2. matplotlib" },
+          { name: "3. standard library" },
+          { name: "4. good practices" }
+        ], 
+        [
+
+        ],
+        [
+
+        ], 
+        [
+          { name: "L12 lots of problems"}
+        ], 
+        [
+          { name: "L12 lots of problems - sol"}
+        ]
+      );
+    </script>
+  </body>
+  </html>

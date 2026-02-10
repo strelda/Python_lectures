@@ -1,0 +1,172 @@
+:root {
+  --primary-color: #0892ef; /* Vibrant Blue */
+  --secondary-color: #0b6099; /* Deeper Blue (Used for table headers) */
+  --tertiary-color: #c2dced; /* Deeper Blue (Used for table headers) */
+  --accent-color: #1a252f; /* Dark Gray (Used for text, highlights, & accents) */
+  --background-color: #ffffff; /* White */
+  --background-color-accent: #f1f8ff; /* White */
+  --problems-color: #e74c3c; /* Red */
+  --learning-color: #219652; /* Green */
+  --solution-color: #34495e; /* Dark Gray */
+}
+
+
+/* Base styles */
+body {
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+.jumbotron {
+  background-color: var(--background-color-accent);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 0.3rem;
+}
+.contact-info {
+    margin-top: 1rem;
+}
+.contact-info a {
+    color: var(--primary-color);
+    text-decoration: none;
+    margin-left: 0.5rem;
+}
+.contact-info img {
+    vertical-align: middle;
+}
+.section-title {
+    border-bottom: 2px solid var(--primary-color);
+    padding: 0.5rem;
+    color: var(--accent-color);
+}
+.color-table {
+    background-color: #f1f8ff;
+    border-left: 3px solid var(--primary-color);
+    border-right: 3px solid var(--primary-color);
+    border-radius: 0.4rem;
+}
+.table th {
+    background-color: #f8f9fa;
+}
+.faded, .faded-link {
+    opacity: 0.6;
+}
+
+
+/* Custom classes */
+.problems {
+  color: var(--problems-color);
+}
+
+.learning {
+  color: var(--learning-color);
+}
+
+.solution {
+  color: var(--solution-color);
+}
+
+/* Ensure colors are applied inside table cells */
+.table td .problems {
+  color: var(--problems-color);
+}
+
+.table td .learning {
+  color: var(--learning-color);
+}
+
+.table td .solution {
+  color: var(--solution-color);
+}
+.item-wrapper h4 {
+  margin: 3px 0;
+}
+
+.item-wrapper p {
+  margin: 1px 0;
+}
+
+/*vector arrow*/
+.vector {
+  position: relative;
+}
+.arrow {
+  position: absolute;
+  top: -0.7em;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.7em;
+}
+
+
+/* Base styles for hyperlinks */
+a {
+  color: var(--secondary-color); /* Default link color */
+  text-decoration: none; /* Remove underline */
+}
+
+a:hover {
+  color: var(--primary-color); /* Color when hovered */
+  text-decoration: none; /* Underline on hover */
+}
+
+a:active {
+  color: var(--accent-color); /* Color when active (clicked) */
+}
+
+
+
+/* Title bar responsive layout */
+.title-bar {
+  display: grid;
+  grid-template-columns: 1fr; /* mobile default */
+  grid-template-areas:
+    "logos"
+    "title"; /* logos above title on mobile */
+  align-items: center;
+  gap: 12px;
+}
+.title-bar__title {
+  margin: 0;
+  grid-area: title;
+}
+.title-bar__logo {
+  max-height: 76px; /* smaller on mobile */
+  width: auto;
+  display: block;
+}
+.title-bar__logo-small { max-height: 41px; width: auto; display: block; }
+.title-bar__logos {
+  grid-area: logos;
+  display: flex;           /* side-by-side on mobile */
+  flex-direction: row;
+  gap: 0px;
+  align-items: center;
+  justify-content: center; /* center above the title */
+}
+/* Medium: title left, both logos stacked in a right column */
+@media (min-width: 576px) {
+  .title-bar {
+    grid-template-columns: 1fr auto; /* title | logos */
+    grid-template-areas: "title logos"; /* title left, logos right */
+  }
+  .title-bar__logos {
+    display: flex;          /* stack logos vertically on the right */
+    flex-direction: column;
+    gap: 0px;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .title-bar__logo { max-height: 98px; }
+}
+/* Large: three columns in one line: title | mff | uk */
+@media (min-width: 992px) {
+  .title-bar {
+    grid-template-columns: 1fr auto auto; /* title | mff | uk */
+  }
+  .title-bar__logos { display: contents; }
+  .title-bar__title { justify-self: start; }
+  .title-bar__logo { max-height: 135px; }
+  .title-bar__logo--mff { max-height: 80px; justify-self: end; margin: 0; }
+  .title-bar__logo--uk { justify-self: end; }
+}

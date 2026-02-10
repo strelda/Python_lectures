@@ -1,0 +1,18 @@
+<div style="text-align: center; max-width: 100%; height: auto;">
+<svg width="60%" height="100%" viewBox="0 0 600 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+  <rect x="10" y="5" width="590" height="60" rx="10" ry="10" fill="none" stroke="gray" stroke-width="2"/>
+  <text x="555" y="25" font-family="Arial" font-size="16" fill="gray" font-weight="bold">float</text>
+
+  <rect x="20" y="35" width="40" height="20" rx="5" ry="5" fill="none" stroke="red" stroke-width="2"/>
+  <text x="25" y="50" font-family="Arial" font-size="12" fill="gray">Sign</text>
+  <text x="25" y="25" font-family="Arial" font-size="12" fill="red">1 bit</text>
+
+  <rect x="65" y="35" width="135" height="20" rx="5" ry="5" fill="none" stroke="cyan" stroke-width="2"/>
+  <text x="70" y="50" font-family="Arial" font-size="12" fill="gray">Exponent</text>
+  <text x="70" y="25" font-family="Arial" font-size="12" fill="cyan">8 bits</text>
+
+  <rect x="205" y="35" width="385" height="20" rx="5" ry="5" fill="none" stroke="yellow" stroke-width="2"/>
+  <text x="210" y="50" font-family="Arial" font-size="12" fill="gray">Mantissa</text>
+  <text x="210" y="25" font-family="Arial" font-size="12" fill="yellow">23 bits</text>
+</svg>
+</div>

@@ -1,0 +1,19 @@
+#!/bin/bash
+# pip3 install jupyterlab (6.5.4 version is fine)
+
+read -p "Convert: 1.semester/lecture " number
+path="1.semester/lecture ${number}/*.ipynb"
+
+# Convert notebooks to HTML
+jupyter nbconvert --to html "$path" --template classic
+
+# Add download link to the top of each generated HTML file
+for file in 1.semester/lecture\ ${number}/*.html; do
+  filename=$(basename "$file" .html)
+  download_link="https://ipnp.cz/strelecek/1.semester/lecture ${number}/${filename}.ipynb"
+  sed -i '' "1i\\
+  <div style=\"text-align: center; margin: 10px;\">\\
+  <a href=\"$download_link\" download style=\"display: inline-block; padding: 10px 20px; text-decoration: none; font-weight: bold; color: #fff; background-color: #007bff; border: 1px solid #007bff; border-radius: 5px; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);\">Download this notebook</a>\\
+  </div><br>\\
+  " "$file"
+done
