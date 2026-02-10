@@ -15,7 +15,9 @@ Link to my lecture sites here: [ipnp.cz/strelecek](https://ipnp.cz/strelecek).
 
 ## Converting notebooks to html
 Install [nbconvert](https://nbconvert.readthedocs.io/en/latest/) and run the deploy/convert_notebooks.sh script.
-`pip3 install jupyterlab` (6.5.4 version works)
+```bash
+pip install jupyterlab nbconvert
+```
 
 On MacOS, templates should be located at
 ```bash

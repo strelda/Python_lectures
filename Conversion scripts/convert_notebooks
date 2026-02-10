@@ -1,5 +1,5 @@
 #!/bin/bash
-# pip3 install jupyterlab (6.5.4 version is fine)
+# pip install jupyterlab nbconvert
 
 read -p "Convert: 1.semester/lecture " number
 path="1.semester/lecture ${number}/*.ipynb"
