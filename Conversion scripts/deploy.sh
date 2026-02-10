@@ -1,4 +1,4 @@
-# !/bin/bash
+#!/bin/bash
 # script for deploying to server via rsync
 
 set -euo pipefail
